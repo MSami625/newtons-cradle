@@ -16,11 +16,11 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	bob1=new Bob(210,550,45);
-	bob2=new Bob(300,550,45);
-	bob3=new Bob(390,550,45);
-	bob4=new Bob(480,550,45);
-	bob5=new Bob(570,550,45);
+	bob1=new Bob(230,550,45);
+	bob2=new Bob(320,550,45);
+	bob3=new Bob(410,550,45);
+	bob4=new Bob(500,550,45);
+	bob5=new Bob(590,550,45);
 	roof=new Roof(550,150,500,50);
 	chain1=new Chain(bob1.body,roof.body,-95*2,0);
 	chain2=new Chain(bob2.body,roof.body,-50*2,0);
@@ -63,6 +63,12 @@ function draw() {
 function keyPressed(){
 	if(keyCode === UP_ARROW){
 		Matter.Body.applyForce(bob1.body, bob1.body.position,
-			{x: 110,y: 0});
+			{x: 0,y:-50});
 	}
+
+	if(keyCode === LEFT_ARROW){
+		Matter.Body.applyForce(bob1.body, bob1.body.position,
+			{x: -150,y:0});
+	}
+
 }
