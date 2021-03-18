@@ -9,13 +9,13 @@ class Chain{
             pointB:{x:this.offsetX,y:this.offsetY}
         }
 
-        this.chain=Constraint.create(options);
-        World.add(world,this.chain);
+        this.Chain=Constraint.create(options);
+        World.add(world,this.Chain);
 
     }
     display(){
-        var pointA=this.chain.bodyA.position;
-        var pointB=this.chain.bodyB.position;
+        var pointA=this.Chain.bodyA.position;
+        var pointB=this.Chain.bodyB.position;
 
         strokeWeight(3);
         stroke("white");

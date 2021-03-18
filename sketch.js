@@ -16,17 +16,17 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	bob1=new Bob(230,550,45);
-	bob2=new Bob(320,550,45);
-	bob3=new Bob(410,550,45);
-	bob4=new Bob(500,550,45);
-	bob5=new Bob(590,550,45);
-	roof=new Roof(550,150,500,50);
-	chain1=new Chain(bob1.body,roof.body,-95*2,0);
-	chain2=new Chain(bob2.body,roof.body,-50*2,0);
-	chain3=new Chain(bob3.body,roof.body,-5*2,0);
-	chain4=new Chain(bob4.body,roof.body,40*2,0);
-	chain5=new Chain(bob5.body,roof.body,85*2,0);
+	bob1=new Bob(200,550,40);
+	bob2=new Bob(300,550,40);
+	bob3=new Bob(400,550,40);
+	bob4=new Bob(500,550,40);
+	bob5=new Bob(600,550,40);
+	roof=new Roof(400,200,500,40);
+	chain1=new Chain(bob1.body,roof.body,-40*2,0);
+	chain2=new Chain(bob2.body,roof.body,-20,0);
+	chain3=new Chain(bob3.body,roof.body,-0*2,0);
+	chain4=new Chain(bob4.body,roof.body,20*2,0);
+	chain5=new Chain(bob5.body,roof.body,40*2,0);
 	//Create the Bodies Here.
 
 
@@ -54,7 +54,6 @@ function draw() {
   bob5.display();
   roof.display();
  
- 
   
   drawSprites();
  
@@ -63,12 +62,5 @@ function draw() {
 function keyPressed(){
 	if(keyCode === UP_ARROW){
 		Matter.Body.applyForce(bob1.body, bob1.body.position,
-			{x: -100,y:-100});
-	}
-
-	if(keyCode === LEFT_ARROW){
-		Matter.Body.applyForce(bob1.body, bob1.body.position,
-			{x: -100,y:0});
-	}
-
-}
+			{x: -50,y:-50});}
+		}
