@@ -10,24 +10,39 @@ var roof;
 var chain1,chain2,chain3,chain4,chain5;
 
 function setup() {
-	createCanvas(1200, 700);
+	createCanvas(1600, 700);
+	rectMode(CENTER);
 
 
 	engine = Engine.create();
 	world = engine.world;
 
-	bob1=new Bob(200,550,40);
-	bob2=new Bob(300,550,40);
-	bob3=new Bob(400,550,40);
-	bob4=new Bob(500,550,40);
-	bob5=new Bob(600,550,40);
-	roof=new Roof(400,200,500,40);
-	chain1=new Chain(bob1.body,roof.body,-40*2,0);
-	chain2=new Chain(bob2.body,roof.body,-20,0);
-	chain3=new Chain(bob3.body,roof.body,-0*2,0);
-	chain4=new Chain(bob4.body,roof.body,20*2,0);
-	chain5=new Chain(bob5.body,roof.body,40*2,0);
-	//Create the Bodies Here.
+	roof=new Roof(width/2,height/4,width/7,20);
+
+	bobDiameter=50;
+
+	startBobPositionX=width/2;
+	startBobPositionY=height/4+500;
+	bob1=new Bob(startBobPositionX-bobDiameter*2,startBobPositionY,bobDiameter);
+	bob2=new Bob(startBobPositionX-bobDiameter,startBobPositionY,bobDiameter);
+	bob3=new Bob(startBobPositionX,startBobPositionY,bobDiameter);
+	bob4=new Bob(startBobPositionX+bobDiameter,startBobPositionY,bobDiameter);
+	bob5=new Bob(startBobPositionX+bobDiameter*2,startBobPositionY,bobDiameter);
+	
+	
+	//Create a Ground
+	
+
+	
+
+
+	chain1=new Chain(bob1.body,roof.body,-bobDiameter*2, 0)
+	chain2=new Chain(bob2.body,roof.body,-bobDiameter*1, 0)
+	chain3=new Chain(bob3.body,roof.body,0, 0)
+	chain4=new Chain(bob4.body,roof.body,bobDiameter*1, 0)
+	chain5=new Chain(bob5.body,roof.body,bobDiameter*2, 0)
+
+	
 
 
 	Engine.run(engine);
@@ -40,7 +55,6 @@ function draw() {
   background("grey");
   Engine.update(engine);
 
-  keyPressed();
 
   chain1.display();
   chain2.display();
@@ -61,6 +75,17 @@ function draw() {
 
 function keyPressed(){
 	if(keyCode === UP_ARROW){
-		Matter.Body.applyForce(bob1.body, bob1.body.position,
-			{x: -50,y:-50});}
+		Matter.Body.applyForce(bob5.body, bob5.body.position,{x: 120,y:-100});}
 		}
+
+		function drawLine(constraint)
+{
+	bobBodyPosition=constraint.bodyA.position
+	roofBodyPosition=constraint.bodyB.position
+
+	roofBodyOffset=constraint.pointB;
+	
+	roofBodyX=roofBodyPosition.x+roofBodyOffset.x
+	roofBodyY=roofBodyPosition.y+roofBodyOffset.y
+	line(bobBodyPosition.x, bobBodyPosition.y, roofBodyX,roofBodyY);
+}

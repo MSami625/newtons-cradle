@@ -1,11 +1,11 @@
 class Chain{
-    constructor( bodyA ,bodyB,offsetX,offsetY){
+    constructor( body1 ,body2,offsetX,offsetY){
         this.offsetX=offsetX;
         this.offsetY=offsetY;
 
         var options={
-            bodyA:bodyA,
-            bodyB:bodyB,
+            bodyA:body1,
+            bodyB:body2,
             pointB:{x:this.offsetX,y:this.offsetY}
         }
 
